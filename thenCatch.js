@@ -1,7 +1,7 @@
 function addNewLineElement(object) {
     const ul = document.getElementById("listOfPeople");
     const li = document.createElement("li");
-    li.appendChild(document.createTextNode(object.name + " " + object.emailId + " "));
+    li.appendChild(document.createTextNode(`Name: ${object.name} -> Email: ${object.emailId}`));
   
     const editButton = document.createElement("input");
     editButton.type = "button";
@@ -20,7 +20,7 @@ function addNewLineElement(object) {
     deleteButton.value = "Delete";
     deleteButton.addEventListener("click", () => {
       axios
-        .delete(`https://crudcrud.com/api/640b2cb724e342ad98f7ef352af77f07/crudapitesting/${object._id}`)
+        .delete(`https://crudcrud.com/api/1d6e37e91c8b4ef992855f8eba91d3ec/a/${object._id}`)
         .then(() => {
           li.remove();
         })
@@ -28,15 +28,6 @@ function addNewLineElement(object) {
           console.log(error);
         });
     });
-
-    // deleteButton.addEventListener("click", async () => {
-    //     try {
-    //       await axios.delete(`https://crudcrud.com/api/640b2cb724e342ad98f7ef352af77f07/crudapitesting/${object._id}`);
-    //       li.remove();
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   });
 
     deleteButton.className = "delete-button";
     deleteButton.style.border = "2px solid red";
@@ -47,7 +38,7 @@ function addNewLineElement(object) {
   
   window.addEventListener("DOMContentLoaded", () => {
     axios
-      .get("https://crudcrud.com/api/640b2cb724e342ad98f7ef352af77f07/crudapitesting")
+      .get("https://crudcrud.com/api/1d6e37e91c8b4ef992855f8eba91d3ec/a")
       .then((response) => {
         const userList = response.data;
         userList.forEach((user) => {
@@ -72,7 +63,7 @@ function addNewLineElement(object) {
       };
   
       axios
-        .post("https://crudcrud.com/api/640b2cb724e342ad98f7ef352af77f07/crudapitesting", object)
+        .post("https://crudcrud.com/api/1d6e37e91c8b4ef992855f8eba91d3ec/a", object)
         .then((response) => {
           console.log(response.data);
           addNewLineElement(response.data);
